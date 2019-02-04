@@ -17,4 +17,4 @@ RUN curl -L http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -
     tar xzf install-tl-unx.tar.gz && \
     ./install-tl-*/install-tl -profile ./minplus.profile
 
-ENTRYPOINT /bin/bash
+ENTRYPOINT /bin/sh
