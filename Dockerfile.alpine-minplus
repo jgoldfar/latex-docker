@@ -15,6 +15,7 @@ COPY minplus.profile .
 
 RUN curl -L http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -o install-tl-unx.tar.gz && \
     tar xzf install-tl-unx.tar.gz && \
-    ./install-tl-*/install-tl -profile ./minplus.profile
-
-ENTRYPOINT /bin/sh
+    ./install-tl-*/install-tl -profile ./minplus.profile && \
+    rm -rf minplus.profile install-tl-*
+    
+ENV PATH="/usr/local/texlive/2018/bin/x86_64-linuxmusl:${PATH}"
