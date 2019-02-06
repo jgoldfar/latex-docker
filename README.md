@@ -27,28 +27,33 @@ Usage:
 -----
 
 ```shell
-docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v "$(pwd)":/data jgoldfar/latex-docker
+docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v "$(pwd)":/data jgoldfar/latex-docker:debian-latest
 
 # Or better in one go (does not start container twice)
-docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v "$(pwd)":/data jgoldfar/latex-docker /bin/sh -c "pdflatex example.tex && pdflatex example.tex"
+docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v "$(pwd)":/data jgoldfar/latex-docker:debian-latest /bin/sh -c "pdflatex example.tex && pdflatex example.tex"
 
 # View
 ./example.pdf
 ```
 
-`WORKDIRs` match, mounted to `/data` inside container.
+Called this way, your working directory would be mounted to `/data` inside container.
 
 Why should I use this container?
 
 -----
 
 - Easy setup
-- `chktex` and `pgf` packages are explicitly installed to ensure they are always available.
+- In the Debian-based images, `chktex` and `pgf` packages are explicitly installed to ensure they are always available.
+- The Alpine images are quite small.
 
 ## Container Descriptions
 
-* `debian-` is the "legacy" image containing the complete TeXLive installation on top of Debian Stretch
+* `debian` is the "legacy" image containing the complete TeXLive installation on top of Debian Stretch. Previous iterations of this repo called this `default`.
 
-* `debian-minimal` is a minimal image containing just TeX & LaTeX
+* `debian-minimal` is a minimal Debian image containing just TeX & LaTeX, but very few other packages.
 
-* `debian-minplus` includes some additional packages on top of `debian-minimal`.
+* `debian-minplus` includes some additional packages on top of `debian-minimal`, primarily for typesetting mathematics.
+
+* `alpine-minimal` is an Alpine 3.9 image with a working TeX + LaTeX installation, as in `debian-minimal`
+
+* `alpine-minplus` includes some additional packages on top of `alpine-minimal`, primarily for typesetting mathematics.
