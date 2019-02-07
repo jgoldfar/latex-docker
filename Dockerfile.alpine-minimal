@@ -16,6 +16,7 @@ COPY minimal.profile .
 RUN curl -L http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -o install-tl-unx.tar.gz && \
     tar xzf install-tl-unx.tar.gz && \
     ./install-tl-*/install-tl -profile ./minimal.profile && \
-    rm -rf minimal.profile install-tl-*
+    rm -rf minimal.profile install-tl-* && \
+    /usr/local/texlive/2018/bin/x86_64-linuxmusl/tlmgr update --self
 
 ENV PATH="/usr/local/texlive/2018/bin/x86_64-linuxmusl:${PATH}"
