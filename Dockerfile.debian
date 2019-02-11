@@ -21,4 +21,4 @@ RUN apt-get -q -y update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-ENV PATH="/usr/local/texlive/2018/bin/x86_64-linuxmusl:${PATH}"
+ENV PATH="/usr/local/texlive/2018/bin/x86_64-linux/:${PATH}"

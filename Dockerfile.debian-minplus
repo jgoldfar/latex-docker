@@ -28,4 +28,4 @@ RUN curl -L http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -
     ./install-tl-*/install-tl -profile ./minplus.profile && \
     rm -rf minplus.profile install-tl*
 
-ENV PATH="/usr/local/texlive/2018/bin/x86_64-linuxmusl:${PATH}"
+ENV PATH="/usr/local/texlive/2018/bin/x86_64-linux/:${PATH}"
